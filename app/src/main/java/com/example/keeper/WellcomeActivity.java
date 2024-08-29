@@ -1,8 +1,6 @@
 package com.example.keeper;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -11,18 +9,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.keeper.databinding.ActivitySplashScreenBinding;
+import com.example.keeper.databinding.ActivityWellcomeBinding;
 
-public class SplashScreen extends AppCompatActivity {
+public class WellcomeActivity extends AppCompatActivity {
 
-    private ActivitySplashScreenBinding binding;
-    private final int SPLASH_SCREEN_DELAY = 3000;
+    private ActivityWellcomeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        binding = ActivitySplashScreenBinding.inflate(getLayoutInflater());
+        binding = ActivityWellcomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -30,22 +27,11 @@ public class SplashScreen extends AppCompatActivity {
             return insets;
         });
 
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(
-                  View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        View viewDecor = getWindow().getDecorView();
+        viewDecor.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_IMMERSIVE
         );
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashScreen.this, IntroductoryActivity.class);
-                startActivity(intent);
-
-                finish();
-            }
-        }, SPLASH_SCREEN_DELAY);
-
     }
 }

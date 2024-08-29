@@ -3,5 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="activity_background">#121212</color>
+    <color name="primary_color">#8875FF</color>
+    <color name="dark_primary_color">#8E7CFF</color>
 
 </resources>
