@@ -13,4 +13,15 @@
     <string name="welcome_description">Please login to your account or create new account to continue</string>
     <string name="login">LOGIN</string>
     <string name="create_account">CREATE ACCOUNT</string>
+    <string name="log_in_small">Login</string>
+    <string name="email_title">Email</string>
+    <string name="email_hint">Enter your Email</string>
+    <string name="password_title">Password</string>
+    <string name="password_hint">Enter Your Password</string>
+    <string name="google_login">Login with Google</string>
+    <string name="facebook_login">Login with Facebook</string>
+    <string name="no_account">Don\'t have an account? </string>
+    <string name="register">Register</string>
+    <string name="or">or</string>
+
 </resources>
