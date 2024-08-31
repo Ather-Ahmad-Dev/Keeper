@@ -18,10 +18,16 @@
     <string name="email_hint">Enter your Email</string>
     <string name="password_title">Password</string>
     <string name="password_hint">Enter Your Password</string>
+    <string name="password_confirm">Confirm Your Password</string>
     <string name="google_login">Login with Google</string>
     <string name="facebook_login">Login with Facebook</string>
     <string name="no_account">Don\'t have an account? </string>
     <string name="register">Register</string>
     <string name="or">or</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="reg_with_google">Register with Google</string>
+    <string name="reg_with_facebook">Register with Facebook</string>
+    <string name="have_acc">Already have an account?</string>
+
 
 </resources>

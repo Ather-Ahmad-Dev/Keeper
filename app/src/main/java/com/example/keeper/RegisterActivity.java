@@ -10,18 +10,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.keeper.databinding.ActivityWellcomeBinding;
+import com.example.keeper.databinding.ActivityRegisterBinding;
 
-public class WellcomeActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
-    private ActivityWellcomeBinding binding;
+    private ActivityRegisterBinding binding;
     private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        binding = ActivityWellcomeBinding.inflate(getLayoutInflater());
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -29,26 +29,27 @@ public class WellcomeActivity extends AppCompatActivity {
             return insets;
         });
 
-        View viewDecor = getWindow().getDecorView();
-        viewDecor.setSystemUiVisibility(
+        getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_IMMERSIVE
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         );
 
-        binding.loginButton.setOnClickListener(new View.OnClickListener() {
+        binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(WellcomeActivity.this, LogInActivity.class);
+                intent = new Intent(RegisterActivity.this, WellcomeActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
-        binding.createAccount.setOnClickListener(new View.OnClickListener() {
+        binding.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(WellcomeActivity.this, RegisterActivity.class);
-                startActivity(intent);
+             intent = new Intent(RegisterActivity.this, LogInActivity.class);
+             startActivity(intent);
+             finish();
             }
         });
     }

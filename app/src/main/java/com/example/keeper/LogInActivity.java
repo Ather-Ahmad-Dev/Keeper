@@ -1,6 +1,7 @@
 package com.example.keeper;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.example.keeper.databinding.ActivityLogInBinding;
 public class LogInActivity extends AppCompatActivity {
 
     private ActivityLogInBinding binding;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,21 @@ public class LogInActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        binding.register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(LogInActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
-
-
 }
