@@ -12,12 +12,16 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.keeper.databinding.ActivityIntroductoryBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class IntroductoryActivity extends AppCompatActivity {
 
     private ActivityIntroductoryBinding binding;
     private ViewPagerAdapter adapter;
     private Intent intent;
+    private FirebaseAuth myAuth;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,13 @@ public class IntroductoryActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE
         );
+
+        myAuth = FirebaseAuth.getInstance();
+        currentUser = myAuth.getCurrentUser();
+
+        if (currentUser != null){
+            startActivity(new Intent(IntroductoryActivity.this, MainActivity.class));
+        }
 
         adapter = new ViewPagerAdapter(this);
         binding.viewPager.setAdapter(adapter);
