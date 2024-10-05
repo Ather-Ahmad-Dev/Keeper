@@ -28,6 +28,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.OAuthProvider;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -113,6 +117,57 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                     signInWithGoogle();
+            }
+        });
+
+        binding.registerWithGithub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                OAuthProvider.Builder provider = OAuthProvider.newBuilder("github.com");
+                List<String> scopes =
+                        new ArrayList<String>() {
+                            {
+                                add("user:email");
+                            }
+                        };
+                provider.setScopes(scopes);
+
+                Task<AuthResult> pendingResultTask = myAuth.getPendingAuthResult();
+                if (pendingResultTask != null) {
+                    pendingResultTask
+                            .addOnSuccessListener(
+                                    new OnSuccessListener<AuthResult>() {
+                                        @Override
+                                        public void onSuccess(AuthResult authResult) {
+                                        }
+                                    })
+                            .addOnFailureListener(
+                                    new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(RegisterActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                } else {
+                    myAuth
+                            .startActivityForSignInWithProvider( RegisterActivity.this, provider.build())
+                            .addOnSuccessListener(
+                                    new OnSuccessListener<AuthResult>() {
+                                        @Override
+                                        public void onSuccess(AuthResult authResult) {
+                                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                            finish();
+                                        }
+                                    })
+                            .addOnFailureListener(
+                                    new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(RegisterActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                }
             }
         });
     }

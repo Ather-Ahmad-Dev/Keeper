@@ -10,7 +10,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
@@ -19,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import com.example.keeper.databinding.ActivityLogInBinding;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.BeginSignInResult;
@@ -34,6 +32,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.OAuthProvider;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -126,6 +128,57 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 signInWithGoogle();
+            }
+        });
+
+        binding.loginWithGithub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OAuthProvider.Builder provider = OAuthProvider.newBuilder("github.com");
+                List<String> scopes =
+                        new ArrayList<String>() {
+                            {
+                                add("user:email");
+                            }
+                        };
+                provider.setScopes(scopes);
+
+                Task<AuthResult> pendingResultTask = myAuth.getPendingAuthResult();
+                if (pendingResultTask != null) {
+                    pendingResultTask
+                            .addOnSuccessListener(
+                                    new OnSuccessListener<AuthResult>() {
+                                        @Override
+                                        public void onSuccess(AuthResult authResult) {
+                                        }
+                                    })
+                            .addOnFailureListener(
+                                    new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(LogInActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                } else {
+                    myAuth
+                            .startActivityForSignInWithProvider( LogInActivity.this, provider.build())
+                            .addOnSuccessListener(
+                                    new OnSuccessListener<AuthResult>() {
+                                        @Override
+                                        public void onSuccess(AuthResult authResult) {
+                                            startActivity(new Intent(LogInActivity.this, MainActivity.class));
+                                            finish();
+                                        }
+                                    })
+                            .addOnFailureListener(
+                                    new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(LogInActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                }
+                //onClick Ends
             }
         });
 

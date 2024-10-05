@@ -224,7 +224,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/register_with_facebook"
+        android:id="@+id/register_with_github"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
@@ -239,14 +239,14 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center"
-            android:src="@drawable/facebook_logo" />
+            android:src="@drawable/github_mark_white" />
 
         <TextView
             style="@style/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/reg_with_facebook" />
+            android:text="@string/reg_with_github" />
 
     </LinearLayout>
 
