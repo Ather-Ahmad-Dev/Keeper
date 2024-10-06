@@ -30,6 +30,13 @@
     <string name="reg_with_facebook">Register with Facebook</string>
     <string name="reg_with_github">Register with Github</string>
     <string name="have_acc">Already have an account?</string>
+    <string name="Index">Index</string>
+    <string name="Calendar">Calendar</string>
+    <string name="Focus">Focus</string>
+    <string name="Profile">Profile</string>
+    <string name="today">What do you want to do today?</string>
+    <string name="add_task">Tap + to add Tasks</string>
+    <string name="index">Index</string>
 
 
 </resources>

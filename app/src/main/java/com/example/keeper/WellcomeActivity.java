@@ -32,7 +32,6 @@ public class WellcomeActivity extends AppCompatActivity {
         View viewDecor = getWindow().getDecorView();
         viewDecor.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_IMMERSIVE
         );
 
