@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:text="Sign Out"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/checklist_image" />
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_bar" />
 
     <ImageView
         android:id="@+id/checklist_image"
@@ -93,6 +93,17 @@
         app:layout_constraintTop_toBottomOf="@+id/today"
         app:layout_constraintStart_toStartOf="@id/checklist_image"
         app:layout_constraintEnd_toEndOf="@id/checklist_image" />
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/all_tasks"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        tools:listitem="@layout/task"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/floating_action_button"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_bar"
