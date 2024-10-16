@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         View viewDecor = getWindow().getDecorView();
         viewDecor.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         );
 
         replaceFragment( new HomeFragment());

@@ -1,9 +1,15 @@
 package com.example.keeper;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.example.keeper.databinding.BottomSheetFragmentBinding;
@@ -42,7 +48,41 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
             }
         });
 
+        binding.calender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectDateAndTime();
+            }
+        });
+
         return binding.getRoot();
+    }
+
+    private void selectDateAndTime(){
+        DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+
+                Toast.makeText(requireContext(), year + "/" + month + "/" + day, Toast.LENGTH_SHORT).show();
+                selectTime();
+
+            }
+        }, 2024, 10, 13);
+
+        datePickerDialog.show();
+    }
+
+    private void selectTime(){
+        TimePickerDialog timePickerDialog = new TimePickerDialog(requireContext(), new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int mints) {
+
+                Toast.makeText(requireContext(), hour + "/" + mints, Toast.LENGTH_SHORT).show();
+
+            }
+        }, 12, 00, true);
+
+        timePickerDialog.show();
     }
 
     @Override
