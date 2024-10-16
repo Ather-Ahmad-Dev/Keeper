@@ -37,6 +37,8 @@
     <string name="today">What do you want to do today?</string>
     <string name="add_task">Tap + to add Tasks</string>
     <string name="index">Index</string>
-
+    <string name="add_task_title">Add Task</string>
+    <string name="task_title">Your Task Title</string>
+    <string name="task_description">Your Task\'s Description</string>
 
 </resources>
