@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/task_priority"
+        style="@style/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/task_priority_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/dark_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task_priority" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/priority_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="70dp"
+            android:minHeight="70dp"
+            android:backgroundTint="@color/dark_gray"
+            android:checkable="true"
+            android:drawableTop="@drawable/flag"
+            android:drawablePadding="5dp"
+            android:text="@string/one"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/priority_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="70dp"
+            android:minHeight="70dp"
+            android:backgroundTint="@color/dark_gray"
+            android:checkable="true"
+            android:drawableTop="@drawable/flag"
+            android:drawablePadding="5dp"
+            android:text="@string/two"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/priority_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="70dp"
+            android:minHeight="70dp"
+            android:backgroundTint="@color/dark_gray"
+            android:checkable="true"
+            android:drawableTop="@drawable/flag"
+            android:drawablePadding="5dp"
+            android:text="@string/three"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/priority_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="70dp"
+            android:minHeight="70dp"
+            android:backgroundTint="@color/dark_gray"
+            android:checkable="true"
+            android:drawableTop="@drawable/flag"
+            android:drawablePadding="5dp"
+            android:text="@string/four"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/priority_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="70dp"
+            android:minHeight="70dp"
+            android:backgroundTint="@color/dark_gray"
+            android:checkable="true"
+            android:drawableTop="@drawable/flag"
+            android:drawablePadding="5dp"
+            android:text="@string/five"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/priority_six"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="70dp"
+            android:minHeight="70dp"
+            android:backgroundTint="@color/dark_gray"
+            android:checkable="true"
+            android:drawableTop="@drawable/flag"
+            android:drawablePadding="5dp"
+            android:text="@string/six"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/priority_seven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="70dp"
+            android:minHeight="70dp"
+            android:backgroundTint="@color/dark_gray"
+            android:checkable="true"
+            android:drawableTop="@drawable/flag"
+            android:drawablePadding="5dp"
+            android:text="@string/seven"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/priority_eight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="70dp"
+            android:minHeight="70dp"
+            android:backgroundTint="@color/dark_gray"
+            android:checkable="true"
+            android:drawableTop="@drawable/flag"
+            android:drawablePadding="5dp"
+            android:text="@string/eight"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/priority_nine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="70dp"
+            android:minHeight="70dp"
+            android:backgroundTint="@color/dark_gray"
+            android:checkable="true"
+            android:drawableTop="@drawable/flag"
+            android:drawablePadding="5dp"
+            android:text="@string/nine"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/priority_ten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="70dp"
+            android:minHeight="70dp"
+            android:backgroundTint="@color/dark_gray"
+            android:checkable="true"
+            android:drawableTop="@drawable/flag"
+            android:drawablePadding="5dp"
+            android:text="@string/ten"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+        </com.google.android.material.chip.Chip>
+
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/empty_button"
+        android:text="@string/cancel"
+        android:textColor="@color/primary_color"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/set_priority"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chip_group" />
+
+    <Button
+        android:id="@+id/set_priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/primary_button"
+        android:text="@string/set_priority"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cancel_button"
+        app:layout_constraintTop_toBottomOf="@id/chip_group" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

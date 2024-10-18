@@ -1,7 +1,9 @@
 package com.example.keeper;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +15,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.example.keeper.databinding.BottomSheetFragmentBinding;
+import com.example.keeper.databinding.TaskPriorityDialogBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 
 public class BottomSheetFragment extends BottomSheetDialogFragment {
 
     private BottomSheetFragmentBinding binding;
+    private TaskPriorityDialogBinding taskPriorityDialogBinding;
     private OnTaskAddedListener onTaskAddedListener;
+    private Dialog taskPriorityDialog;
 
     public interface OnTaskAddedListener{
         void onTaskAdded(String title, String description);
@@ -55,7 +62,49 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
             }
         });
 
+        binding.flag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (taskPriorityDialog == null){
+                    setTaskPriorityDialog();
+                }
+                taskPriorityDialog.show();
+                getSelectedChip();
+            }
+        });
+
         return binding.getRoot();
+    }
+
+    private void setTaskPriorityDialog(){
+        taskPriorityDialogBinding = TaskPriorityDialogBinding.inflate(getLayoutInflater());
+        taskPriorityDialog = new Dialog(requireContext());
+        taskPriorityDialog.setContentView(taskPriorityDialogBinding.getRoot());
+        taskPriorityDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    }
+
+    private void getSelectedChip(){
+        ChipGroup chipGroup = taskPriorityDialogBinding.chipGroup;
+        taskPriorityDialogBinding.setPriority.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int selectedChipID = chipGroup.getCheckedChipId();
+                if (selectedChipID != View.NO_ID){
+                    Chip selectedChip = taskPriorityDialogBinding.getRoot().findViewById(selectedChipID);
+                    String chipText =   selectedChip.getText().toString();
+                    Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_SHORT).show();
+                    taskPriorityDialog.dismiss();
+                } else {
+                    Toast.makeText(requireContext(), "Select Priority", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        taskPriorityDialogBinding.cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                taskPriorityDialog.dismiss();
+            }
+        });
     }
 
     private void selectDateAndTime(){
@@ -88,7 +137,10 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-
+        if (taskPriorityDialog != null && taskPriorityDialog.isShowing()){
+            taskPriorityDialog.dismiss();
+        }
         binding = null;
+        taskPriorityDialogBinding = null;
     }
 }
