@@ -53,4 +53,16 @@
     <string name="ten">10</string>
     <string name="cancel">Cancel</string>
     <string name="set_priority">Set Priority</string>
+    <string name="choose_category">Choose Category</string>
+    <string name="grocery">Grocery</string>
+    <string name="work">Work</string>
+    <string name="sport">Sport</string>
+    <string name="design">Design</string>
+    <string name="university">University</string>
+    <string name="social">Social</string>
+    <string name="music">Music</string>
+    <string name="health">Health</string>
+    <string name="movie">Movie</string>
+    <string name="home">home</string>
+    <string name="add_category">Add Category</string>
 </resources>

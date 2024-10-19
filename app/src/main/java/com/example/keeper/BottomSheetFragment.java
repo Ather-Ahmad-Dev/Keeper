@@ -3,7 +3,7 @@ package com.example.keeper;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.example.keeper.databinding.BottomSheetFragmentBinding;
+import com.example.keeper.databinding.TaskCategoryDialogBinding;
 import com.example.keeper.databinding.TaskPriorityDialogBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.chip.Chip;
@@ -24,8 +24,9 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
 
     private BottomSheetFragmentBinding binding;
     private TaskPriorityDialogBinding taskPriorityDialogBinding;
+    private TaskCategoryDialogBinding taskCategoryDialogBinding;
     private OnTaskAddedListener onTaskAddedListener;
-    private Dialog taskPriorityDialog;
+    private Dialog taskPriorityDialog, taskCategoryDialog;
 
     public interface OnTaskAddedListener{
         void onTaskAdded(String title, String description);
@@ -73,7 +74,43 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
             }
         });
 
+        binding.tag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (taskCategoryDialog == null){
+                    setTaskCategoryDialog();
+                }
+                taskCategoryDialog.show();
+                getSelectedCategoryChip();
+            }
+        });
+
         return binding.getRoot();
+    }
+
+    private void getSelectedCategoryChip(){
+        ChipGroup categoryChipGroup = taskCategoryDialogBinding.chipGroupCategory;
+        taskCategoryDialogBinding.setCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int selectedChipID = categoryChipGroup.getCheckedChipId();
+                if (selectedChipID != View.NO_ID){
+                    Chip selectedChip = taskCategoryDialogBinding.getRoot().findViewById(selectedChipID);
+                    String chipText = selectedChip.getText().toString();
+                    Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_SHORT).show();
+                    taskCategoryDialog.dismiss();
+                } else {
+                    Toast.makeText(requireContext(), "Select One", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void setTaskCategoryDialog(){
+        taskCategoryDialogBinding = TaskCategoryDialogBinding.inflate(getLayoutInflater());
+        taskCategoryDialog = new Dialog(requireContext());
+        taskCategoryDialog.setContentView(taskCategoryDialogBinding.getRoot());
+        taskCategoryDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
     private void setTaskPriorityDialog(){
@@ -142,5 +179,6 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         }
         binding = null;
         taskPriorityDialogBinding = null;
+        taskCategoryDialogBinding = null;
     }
 }
