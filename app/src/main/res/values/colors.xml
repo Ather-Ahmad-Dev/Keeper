@@ -7,4 +7,16 @@
     <color name="dark_primary_color">#8E7CFF</color>
     <color name="light_gray">#979797</color>
     <color name="dark_gray">#535353</color>
+
+    <color name="grocery_background">#CCFF80</color>
+    <color name="work_background">#FF9680</color>
+    <color name="sport_background">#80FFFF</color>
+    <color name="design_background">#80FFD9</color>
+    <color name="university_background">#809CFF</color>
+    <color name="social_background">#FF80EB</color>
+    <color name="music_background">#FC80FF</color>
+    <color name="health_background">#80FFA3</color>
+    <color name="movie_background">#80D1FF</color>
+    <color name="home_background">#FFCC80</color>
+
 </resources>

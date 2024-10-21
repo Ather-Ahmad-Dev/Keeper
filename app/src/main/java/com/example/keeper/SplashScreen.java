@@ -16,7 +16,7 @@ import com.example.keeper.databinding.ActivitySplashScreenBinding;
 public class SplashScreen extends AppCompatActivity {
 
     private ActivitySplashScreenBinding binding;
-    private final int SPLASH_SCREEN_DELAY = 3000;
+    private final int SPLASH_SCREEN_DELAY = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

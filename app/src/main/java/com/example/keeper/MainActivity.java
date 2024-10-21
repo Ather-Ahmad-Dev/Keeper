@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
-                bottomSheetFragment.setOnTaskAddedListener((title, description) -> {
+                bottomSheetFragment.setOnTaskAddedListener((title, description, tag, priority) -> {
 
                     Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.framelayout);
                     if(currentFragment instanceof  HomeFragment){
-                        ((HomeFragment) currentFragment).addTask(title, description);
+                        ((HomeFragment) currentFragment).addTask(title, description, tag, priority);
                     }
                 });
                 bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());

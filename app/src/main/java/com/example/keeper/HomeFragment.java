@@ -1,9 +1,11 @@
 package com.example.keeper;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.keeper.databinding.FragmentHomeBinding;
+import com.example.keeper.databinding.TaskBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    private TaskBinding taskBinding;
     private RecyclerViewAdapter recyclerViewAdapter;
     private List<RecyclerViewModelClass> itemList = new ArrayList<>();
 
@@ -54,6 +58,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+        taskBinding = TaskBinding.inflate(getLayoutInflater());
         return binding.getRoot();
     }
 
@@ -65,19 +70,6 @@ public class HomeFragment extends Fragment {
 
         itemList.add(new RecyclerViewModelClass("Title 1", "Timing 1", "University", "1", true));
         itemList.add(new RecyclerViewModelClass("Title 2", "Timing 2", "University", "2", false));
-        itemList.add(new RecyclerViewModelClass("Title 3", "Timing 3", "University", "3", true));
-        itemList.add(new RecyclerViewModelClass("Title 4", "Timing 4", "University", "4", false));
-        itemList.add(new RecyclerViewModelClass("Title 5", "Timing 5", "University", "5", true));
-        itemList.add(new RecyclerViewModelClass("Title 6", "Timing 6", "University", "6", false));
-        itemList.add(new RecyclerViewModelClass("Title 7", "Timing 7", "University", "7", true));
-        itemList.add(new RecyclerViewModelClass("Title 8", "Timing 8", "University", "8", false));
-        itemList.add(new RecyclerViewModelClass("Title 9", "Timing 9", "University", "9", true));
-        itemList.add(new RecyclerViewModelClass("Title 10", "Timing 10", "University", "10", false));
-        itemList.add(new RecyclerViewModelClass("Title 11", "Timing 11", "University", "11", true));
-        itemList.add(new RecyclerViewModelClass("Title 12", "Timing 12", "University", "12", false));
-        itemList.add(new RecyclerViewModelClass("Title 13", "Timing 13", "University", "13", true));
-        itemList.add(new RecyclerViewModelClass("Title 14", "Timing 14", "University", "14", false));
-        itemList.add(new RecyclerViewModelClass("Title 15", "Timing 15", "University", "15", true));
 
         recyclerViewAdapter = new RecyclerViewAdapter(itemList);
         binding.allTasks.setAdapter(recyclerViewAdapter);
@@ -91,9 +83,9 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    public void addTask(String title, String description){
+    public void addTask(String title, String description, String tag, String priority){
 
-            RecyclerViewModelClass newItem = new RecyclerViewModelClass(title, description, "temp", "temp", false);
+            RecyclerViewModelClass newItem = new RecyclerViewModelClass(title, description, tag, priority, false);
             itemList.add(newItem);
             if (recyclerViewAdapter != null){
                 recyclerViewAdapter.notifyItemInserted(itemList.size() - 1);

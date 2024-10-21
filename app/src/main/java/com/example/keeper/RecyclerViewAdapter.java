@@ -1,11 +1,14 @@
 package com.example.keeper;
 
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.keeper.databinding.TaskBinding;
 import java.util.List;
+import java.util.Objects;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.TasksViewHolder> {
 
@@ -48,6 +51,48 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 binding.checkbox.setChecked(item.isChecked());
                 binding.tag.setText(item.getTag());
                 binding.priority.setText(item.getPriority());
+
+                String tagText = item.getTag();
+                if(Objects.equals(tagText, "Grocery")){
+                    binding.tag.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(binding.getRoot().getContext(), R.color.grocery_background)));
+                    binding.tag.setChipIcon(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.bread));
+
+                } else if (Objects.equals(tagText, "Work")) {
+                    binding.tag.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(binding.getRoot().getContext(), R.color.work_background)));
+                    binding.tag.setChipIcon(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.briefcase));
+
+                } else if (Objects.equals(tagText, "Sport")) {
+                    binding.tag.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(binding.getRoot().getContext(), R.color.sport_background)));
+                    binding.tag.setChipIcon(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.sportmini));
+
+                } else if (Objects.equals(tagText, "Design")) {
+                    binding.tag.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(binding.getRoot().getContext(), R.color.design_background)));
+                    binding.tag.setChipIcon(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.designmini));
+
+                } else if (Objects.equals(tagText, "University")) {
+                    binding.tag.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(binding.getRoot().getContext(), R.color.university_background)));
+                    binding.tag.setChipIcon(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.hat));
+
+                } else if (Objects.equals(tagText, "Social")) {
+                    binding.tag.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(binding.getRoot().getContext(), R.color.social_background)));
+                    binding.tag.setChipIcon(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.megaphone));
+
+                } else if (Objects.equals(tagText, "Music")) {
+                    binding.tag.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(binding.getRoot().getContext(), R.color.music_background)));
+                    binding.tag.setChipIcon(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.musicmini));
+
+                } else if (Objects.equals(tagText, "Health")) {
+                    binding.tag.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(binding.getRoot().getContext(), R.color.health_background)));
+                    binding.tag.setChipIcon(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.heartbeat));
+
+                } else if (Objects.equals(tagText, "Movie")) {
+                    binding.tag.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(binding.getRoot().getContext(), R.color.movie_background)));
+                    binding.tag.setChipIcon(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.videocamera));
+
+                } else if (Objects.equals(tagText, "home")) {
+                    binding.tag.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(binding.getRoot().getContext(), R.color.home_background)));
+                    binding.tag.setChipIcon(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.homemini));
+                }
         }
     }
 }

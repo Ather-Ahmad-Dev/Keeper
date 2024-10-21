@@ -210,31 +210,4 @@
 
     </com.google.android.material.chip.ChipGroup>
 
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/empty_button"
-        android:text="@string/cancel"
-        android:textColor="@color/primary_color"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/set_priority"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chip_group" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/set_priority"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/primary_color"
-        app:cornerRadius="4dp"
-        android:text="@string/set_priority"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cancel_button"
-        app:layout_constraintTop_toBottomOf="@id/chip_group" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

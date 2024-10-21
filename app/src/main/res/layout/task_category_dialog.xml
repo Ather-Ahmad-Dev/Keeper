@@ -189,17 +189,4 @@
 
     </com.google.android.material.chip.ChipGroup>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/set_category"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/primary_color"
-        app:cornerRadius="4dp"
-        android:text="@string/add_category"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="@id/chip_group_category"
-        app:layout_constraintEnd_toEndOf="@id/chip_group_category"
-        app:layout_constraintTop_toBottomOf="@id/chip_group_category" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
