@@ -71,7 +71,7 @@ public class HomeFragment extends Fragment {
         itemList.add(new RecyclerViewModelClass("Title 1", "Timing 1", "University", "1", true));
         itemList.add(new RecyclerViewModelClass("Title 2", "Timing 2", "University", "2", false));
 
-        recyclerViewAdapter = new RecyclerViewAdapter(itemList);
+        recyclerViewAdapter = new RecyclerViewAdapter(requireContext(),itemList);
         binding.allTasks.setAdapter(recyclerViewAdapter);
 
         if(recyclerViewAdapter.getItemCount() == 0){

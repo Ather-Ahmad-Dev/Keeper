@@ -33,6 +33,7 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line"
         app:singleSelection="true">
@@ -41,7 +42,6 @@
             android:id="@+id/priority_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:chipStrokeColor="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
             android:checkable="true"
             android:drawableTop="@drawable/grocery"
@@ -49,14 +49,13 @@
             android:text="@string/grocery"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15sp">
-        </com.google.android.material.chip.Chip>
+            android:textSize="15sp"
+            app:chipStrokeColor="@android:color/transparent"></com.google.android.material.chip.Chip>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/priority_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:chipStrokeColor="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
             android:checkable="true"
             android:drawableTop="@drawable/work"
@@ -64,14 +63,13 @@
             android:text="@string/work"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15sp">
-        </com.google.android.material.chip.Chip>
+            android:textSize="15sp"
+            app:chipStrokeColor="@android:color/transparent"></com.google.android.material.chip.Chip>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/priority_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:chipStrokeColor="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
             android:checkable="true"
             android:drawableTop="@drawable/sport"
@@ -79,14 +77,13 @@
             android:text="@string/sport"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15sp">
-        </com.google.android.material.chip.Chip>
+            android:textSize="15sp"
+            app:chipStrokeColor="@android:color/transparent"></com.google.android.material.chip.Chip>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/priority_four"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:chipStrokeColor="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
             android:checkable="true"
             android:drawableTop="@drawable/design"
@@ -94,14 +91,13 @@
             android:text="@string/design"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15sp">
-        </com.google.android.material.chip.Chip>
+            android:textSize="15sp"
+            app:chipStrokeColor="@android:color/transparent"></com.google.android.material.chip.Chip>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/priority_five"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:chipStrokeColor="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
             android:checkable="true"
             android:drawableTop="@drawable/university"
@@ -109,14 +105,13 @@
             android:text="@string/university"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15sp">
-        </com.google.android.material.chip.Chip>
+            android:textSize="15sp"
+            app:chipStrokeColor="@android:color/transparent"></com.google.android.material.chip.Chip>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/priority_six"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:chipStrokeColor="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
             android:checkable="true"
             android:drawableTop="@drawable/social"
@@ -124,14 +119,13 @@
             android:text="@string/social"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15sp">
-        </com.google.android.material.chip.Chip>
+            android:textSize="15sp"
+            app:chipStrokeColor="@android:color/transparent"></com.google.android.material.chip.Chip>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/priority_seven"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:chipStrokeColor="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
             android:checkable="true"
             android:drawableTop="@drawable/music"
@@ -139,14 +133,13 @@
             android:text="@string/music"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15sp">
-        </com.google.android.material.chip.Chip>
+            android:textSize="15sp"
+            app:chipStrokeColor="@android:color/transparent"></com.google.android.material.chip.Chip>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/priority_eight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:chipStrokeColor="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
             android:checkable="true"
             android:drawableTop="@drawable/health"
@@ -154,14 +147,13 @@
             android:text="@string/health"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15sp">
-        </com.google.android.material.chip.Chip>
+            android:textSize="15sp"
+            app:chipStrokeColor="@android:color/transparent"></com.google.android.material.chip.Chip>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/priority_nine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:chipStrokeColor="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
             android:checkable="true"
             android:drawableTop="@drawable/movie"
@@ -169,14 +161,13 @@
             android:text="@string/movie"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15sp">
-        </com.google.android.material.chip.Chip>
+            android:textSize="15sp"
+            app:chipStrokeColor="@android:color/transparent"></com.google.android.material.chip.Chip>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/priority_ten"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:chipStrokeColor="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
             android:checkable="true"
             android:drawableTop="@drawable/home"
@@ -184,8 +175,8 @@
             android:text="@string/home"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15sp">
-        </com.google.android.material.chip.Chip>
+            android:textSize="15sp"
+            app:chipStrokeColor="@android:color/transparent"></com.google.android.material.chip.Chip>
 
     </com.google.android.material.chip.ChipGroup>
 

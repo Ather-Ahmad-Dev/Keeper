@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskDetailActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/close"
+        android:backgroundTint="@color/dark_gray"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <CheckBox
+        android:id="@+id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/task_title"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"/>
+
+    <TextView
+        android:id="@+id/task_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task Title"
+        style="@style/title"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/state"
+        app:layout_constraintTop_toBottomOf="@id/close"/>
+
+    <TextView
+        android:id="@+id/task_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title Description"
+        style="@style/description"
+        android:textColor="@color/light_gray"
+        android:paddingStart="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@id/task_title"
+        app:layout_constraintTop_toBottomOf="@id/task_title"/>
+
+    <ImageButton
+        android:id="@+id/edit_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pencil_logo"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintTop_toTopOf="@id/task_title"/>
+
+    <TextView
+        android:id="@+id/task_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/clock"
+        android:drawablePadding="10dp"
+        android:paddingStart="15dp"
+        android:text="@string/t_time"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toTopOf="@id/task_time_button"
+        app:layout_constraintBottom_toBottomOf="@id/task_time_button"/>
+
+    <Button
+        android:id="@+id/task_time_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today At 16:45"
+        android:background="@drawable/primary_button"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/task_description"/>
+
+    <TextView
+        android:id="@+id/task_category_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/tag"
+        android:drawablePadding="10dp"
+        android:paddingStart="15dp"
+        android:text="@string/t_cat"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toTopOf="@id/task_category_button"
+        app:layout_constraintBottom_toBottomOf="@id/task_category_button"/>
+
+    <Button
+        android:id="@+id/task_category_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/university"
+        android:background="@drawable/primary_button"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/task_time_button"/>
+
+    <TextView
+        android:id="@+id/task_priority_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/flag"
+        android:drawablePadding="10dp"
+        android:paddingStart="15dp"
+        android:text="@string/t_priority"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toTopOf="@id/task_priority_button"
+        app:layout_constraintBottom_toBottomOf="@id/task_priority_button"/>
+
+    <Button
+        android:id="@+id/task_priority_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default"
+        android:background="@drawable/primary_button"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/task_category_button"/>
+
+    <TextView
+        android:id="@+id/delete_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/delete_logo"
+        android:drawablePadding="10dp"
+        android:paddingStart="15sp"
+        android:text="@string/t_delete"
+        android:textColor="@color/error"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/task_priority_button"/>
+
+    <Button
+        android:id="@+id/edit_task_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/edit"
+        android:background="@drawable/primary_button"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintBottom_toTopOf="@id/bottom_line"/>
+
+    <View
+        android:id="@+id/bottom_line"
+        android:layout_width="134dp"
+        android:layout_height="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

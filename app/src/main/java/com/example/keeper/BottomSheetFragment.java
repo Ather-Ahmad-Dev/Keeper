@@ -110,7 +110,6 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         taskCategoryDialogBinding = TaskCategoryDialogBinding.inflate(getLayoutInflater());
         taskCategoryDialog = new Dialog(requireContext());
         taskCategoryDialog.setContentView(taskCategoryDialogBinding.getRoot());
-        taskCategoryDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
     private void getSelectedChip() {
@@ -134,7 +133,6 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         taskPriorityDialogBinding = TaskPriorityDialogBinding.inflate(getLayoutInflater());
         taskPriorityDialog = new Dialog(requireContext());
         taskPriorityDialog.setContentView(taskPriorityDialogBinding.getRoot());
-        taskPriorityDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
     private void selectDateAndTime() {

@@ -65,4 +65,10 @@
     <string name="movie">Movie</string>
     <string name="home">home</string>
     <string name="add_category">Add Category</string>
+    <string name="t_time">Task Time</string>
+    <string name="t_cat">Task Category</string>
+    <string name="t_priority">Task Priority</string>
+    <string name="t_delete">Delete Task</string>
+    <string name="e_task_title">Edit Your Task</string>
+    <string name="edit">Edit</string>
 </resources>

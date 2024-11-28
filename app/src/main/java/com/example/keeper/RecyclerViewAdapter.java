@@ -1,7 +1,10 @@
 package com.example.keeper;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -12,9 +15,11 @@ import java.util.Objects;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.TasksViewHolder> {
 
+    private final Context context;
     private final List<RecyclerViewModelClass> itemList;
 
-    public RecyclerViewAdapter(List<RecyclerViewModelClass> itemList){
+    public RecyclerViewAdapter(Context context,List<RecyclerViewModelClass> itemList){
+        this.context = context;
         this.itemList = itemList;
     }
 
@@ -93,6 +98,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     binding.tag.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(binding.getRoot().getContext(), R.color.home_background)));
                     binding.tag.setChipIcon(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.homemini));
                 }
+
+                binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(context, TaskDetailActivity.class);
+
+                        String taskTitle = binding.taskTitle.getText().toString();
+                        String taskDescription = binding.taskTime.getText().toString();
+                        String taskCategory = binding.tag.getText().toString();
+                        String taskPriority = binding.priority.getText().toString();
+                        boolean isChecked = binding.checkbox.isChecked();
+
+                        intent.putExtra("TASK_TITLE", taskTitle);
+                        intent.putExtra("TASK_DESCRIPTION", taskDescription);
+                        intent.putExtra("TASK_CATEGORY", taskCategory);
+                        intent.putExtra("TASK_PRIORITY", taskPriority);
+                        intent.putExtra("TASK_CHECK", isChecked);
+
+                        context.startActivity(intent);
+
+                    }
+                });
         }
     }
 }

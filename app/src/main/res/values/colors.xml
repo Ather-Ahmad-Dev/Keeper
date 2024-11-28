@@ -19,4 +19,6 @@
     <color name="movie_background">#80D1FF</color>
     <color name="home_background">#FFCC80</color>
 
+    <color name="error">#C90F0F</color>
+
 </resources>
