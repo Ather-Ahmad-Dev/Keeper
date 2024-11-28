@@ -36,14 +36,21 @@ public class HomeFragment extends Fragment {
                 if (result.getResultCode() == Activity.RESULT_OK) {
                     Intent data = result.getData();
                     if (data != null) {
-                        String title = data.getStringExtra("TASK_TITLE");
-                        String description = data.getStringExtra("TASK_DESCRIPTION");
-                        String tag = data.getStringExtra("TASK_CATEGORY");
-                        String priority = data.getStringExtra("TASK_PRIORITY");
-                        boolean isChecked = data.getBooleanExtra("TASK_CHECK", false);
+
+                        boolean deleteTask = data.getBooleanExtra("DELETE_TASK", false);
                         int position = data.getIntExtra("TASK_POSITION", -1);
 
-                        if (position != -1) {
+                        if (deleteTask && position != 1) {
+                            itemList.remove(position);
+                            recyclerViewAdapter.notifyItemRemoved(position);
+                        } else if (position != 1) {
+
+                            String title = data.getStringExtra("TASK_TITLE");
+                            String description = data.getStringExtra("TASK_DESCRIPTION");
+                            String tag = data.getStringExtra("TASK_CATEGORY");
+                            String priority = data.getStringExtra("TASK_PRIORITY");
+                            boolean isChecked = data.getBooleanExtra("TASK_CHECK", false);
+
                             RecyclerViewModelClass updatedTask = itemList.get(position);
                             updatedTask.setTaskTitle(title);
                             updatedTask.setTaskTime(description);

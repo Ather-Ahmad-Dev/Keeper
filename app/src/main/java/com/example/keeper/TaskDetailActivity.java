@@ -19,6 +19,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.keeper.databinding.ActivityTaskDetailBinding;
+import com.example.keeper.databinding.ConfirmationDialogBinding;
 import com.example.keeper.databinding.TaskAndDescripitionEditDialogBinding;
 import com.example.keeper.databinding.TaskCategoryDialogBinding;
 import com.example.keeper.databinding.TaskPriorityDialogBinding;
@@ -31,8 +32,9 @@ public class TaskDetailActivity extends AppCompatActivity {
     private TaskAndDescripitionEditDialogBinding taskAndDescripitionEditDialogBinding;
     private TaskCategoryDialogBinding taskCategoryDialogBinding;
     private TaskPriorityDialogBinding taskPriorityDialogBinding;
+    private ConfirmationDialogBinding confirmationDialogBinding;
     private Dialog taskCategoryDialog, taskPriorityDialog;
-    private AlertDialog taskAndTitleDialog;
+    private AlertDialog taskAndTitleDialog, deleteConfirmationDialog;
     private String tag = "";
     private String priority = "";
 
@@ -77,6 +79,24 @@ public class TaskDetailActivity extends AppCompatActivity {
             }
         });
 
+        confirmationDialogBinding.cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteConfirmationDialog.dismiss();
+            }
+        });
+
+        confirmationDialogBinding.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("DELETE_TASK", true);
+                resultIntent.putExtra("TASK_POSITION", getIntent().getIntExtra("TASK_POSITION",-1));
+                setResult(RESULT_OK, resultIntent);
+                finish();
+            }
+        });
+
         binding.taskTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,9 +131,7 @@ public class TaskDetailActivity extends AppCompatActivity {
         binding.deleteTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // prompt confirmation dialog
-                // delete task fom list
-                finish();
+                deleteConfirmationDialog.show();
             }
         });
 
@@ -139,11 +157,13 @@ public class TaskDetailActivity extends AppCompatActivity {
         taskAndDescripitionEditDialogBinding = TaskAndDescripitionEditDialogBinding.inflate(LayoutInflater.from(this));
         taskCategoryDialogBinding = TaskCategoryDialogBinding.inflate(getLayoutInflater());
         taskPriorityDialogBinding = TaskPriorityDialogBinding.inflate(getLayoutInflater());
+        confirmationDialogBinding = ConfirmationDialogBinding.inflate(getLayoutInflater());
         taskCategoryDialog = new Dialog(TaskDetailActivity.this);
         taskPriorityDialog = new Dialog(TaskDetailActivity.this);
         taskCategoryDialog.setContentView(taskCategoryDialogBinding.getRoot());
         taskPriorityDialog.setContentView(taskPriorityDialogBinding.getRoot());
         taskAndTitleDialog = new AlertDialog.Builder(this).setView(taskAndDescripitionEditDialogBinding.getRoot()).create();
+        deleteConfirmationDialog = new AlertDialog.Builder(this).setView(confirmationDialogBinding.getRoot()).create();
 
     }
 

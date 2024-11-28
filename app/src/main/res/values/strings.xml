@@ -72,4 +72,7 @@
     <string name="e_task_title">Edit Your Task</string>
     <string name="edit">Edit</string>
     <string name="confirm">Confirm</string>
+    <string name="r_u_sure">Are you sure?</string>
+    <string name="unrecoverable">You may not be able to recover this task</string>
+
 </resources>
