@@ -14,6 +14,27 @@ public class RecyclerViewModelClass {
         this.isChecked = isChecked;
 
     }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public void setTaskTime(String taskTime) {
+        this.taskTime = taskTime;
+    }
+
+    public void setTaskTitle(String taskTitle) {
+        this.taskTitle = taskTitle;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
     public String getTaskTitle() {
         return taskTitle;
     }

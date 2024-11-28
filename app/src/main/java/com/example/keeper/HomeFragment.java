@@ -1,8 +1,12 @@
 package com.example.keeper;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -26,6 +30,33 @@ public class HomeFragment extends Fragment {
     private TaskBinding taskBinding;
     private RecyclerViewAdapter recyclerViewAdapter;
     private List<RecyclerViewModelClass> itemList = new ArrayList<>();
+    private ActivityResultLauncher<Intent> editTaskLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        String title = data.getStringExtra("TASK_TITLE");
+                        String description = data.getStringExtra("TASK_DESCRIPTION");
+                        String tag = data.getStringExtra("TASK_CATEGORY");
+                        String priority = data.getStringExtra("TASK_PRIORITY");
+                        boolean isChecked = data.getBooleanExtra("TASK_CHECK", false);
+                        int position = data.getIntExtra("TASK_POSITION", -1);
+
+                        if (position != -1) {
+                            RecyclerViewModelClass updatedTask = itemList.get(position);
+                            updatedTask.setTaskTitle(title);
+                            updatedTask.setTaskTime(description);
+                            updatedTask.setTag(tag);
+                            updatedTask.setPriority(priority);
+                            updatedTask.setChecked(isChecked);
+
+                            recyclerViewAdapter.notifyItemChanged(position);
+                        }
+                    }
+                }
+            }
+    );
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -71,25 +102,25 @@ public class HomeFragment extends Fragment {
         itemList.add(new RecyclerViewModelClass("Title 1", "Timing 1", "University", "1", true));
         itemList.add(new RecyclerViewModelClass("Title 2", "Timing 2", "University", "2", false));
 
-        recyclerViewAdapter = new RecyclerViewAdapter(requireContext(),itemList);
+        recyclerViewAdapter = new RecyclerViewAdapter(requireContext(), itemList, editTaskLauncher);
         binding.allTasks.setAdapter(recyclerViewAdapter);
 
-        if(recyclerViewAdapter.getItemCount() == 0){
+        if (recyclerViewAdapter.getItemCount() == 0) {
             binding.allTasks.setVisibility(View.GONE);
-        }else{
+        } else {
             binding.checklistImage.setVisibility(View.GONE);
             binding.today.setVisibility(View.GONE);
             binding.addTask.setVisibility(View.GONE);
         }
     }
 
-    public void addTask(String title, String description, String tag, String priority){
+    public void addTask(String title, String description, String tag, String priority) {
 
-            RecyclerViewModelClass newItem = new RecyclerViewModelClass(title, description, tag, priority, false);
-            itemList.add(newItem);
-            if (recyclerViewAdapter != null){
-                recyclerViewAdapter.notifyItemInserted(itemList.size() - 1);
-            }
+        RecyclerViewModelClass newItem = new RecyclerViewModelClass(title, description, tag, priority, false);
+        itemList.add(newItem);
+        if (recyclerViewAdapter != null) {
+            recyclerViewAdapter.notifyItemInserted(itemList.size() - 1);
+        }
     }
 
     @Override

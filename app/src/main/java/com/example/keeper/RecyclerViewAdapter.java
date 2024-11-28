@@ -6,6 +6,8 @@ import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +19,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private final Context context;
     private final List<RecyclerViewModelClass> itemList;
+    private final ActivityResultLauncher<Intent> editTaskLauncher;
 
-    public RecyclerViewAdapter(Context context,List<RecyclerViewModelClass> itemList){
+    public RecyclerViewAdapter(Context context,List<RecyclerViewModelClass> itemList, ActivityResultLauncher<Intent> editTaskLauncher){
         this.context = context;
         this.itemList = itemList;
+        this.editTaskLauncher = editTaskLauncher;
     }
 
     @NonNull
@@ -115,8 +119,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         intent.putExtra("TASK_CATEGORY", taskCategory);
                         intent.putExtra("TASK_PRIORITY", taskPriority);
                         intent.putExtra("TASK_CHECK", isChecked);
+                        intent.putExtra("TASK_POSITION", getAdapterPosition());
 
-                        context.startActivity(intent);
+                        editTaskLauncher.launch(intent);
+//                        context.startActivity(intent);
 
                     }
                 });

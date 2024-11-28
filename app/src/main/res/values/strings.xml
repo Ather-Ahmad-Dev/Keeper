@@ -71,4 +71,5 @@
     <string name="t_delete">Delete Task</string>
     <string name="e_task_title">Edit Your Task</string>
     <string name="edit">Edit</string>
+    <string name="confirm">Confirm</string>
 </resources>

@@ -80,7 +80,6 @@ public class TaskDetailActivity extends AppCompatActivity {
         binding.taskTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // show dialog to change task time
                 DatePickerDialog datePickerDialog = new DatePickerDialog(TaskDetailActivity.this,new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -96,7 +95,6 @@ public class TaskDetailActivity extends AppCompatActivity {
         binding.taskCategoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // show dialog to change task category
                 taskCategoryDialog.show();
                 getSelectedCategoryChip();
             }
@@ -105,7 +103,6 @@ public class TaskDetailActivity extends AppCompatActivity {
         binding.taskPriorityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // dialog to change priority
                 taskPriorityDialog.show();
                 getSelectedChip();
             }
@@ -119,7 +116,24 @@ public class TaskDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        binding.editTaskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("TASK_TITLE", binding.taskTitle.getText().toString());
+                resultIntent.putExtra("TASK_DESCRIPTION", binding.taskDescription.getText().toString());
+                resultIntent.putExtra("TASK_CATEGORY", binding.taskCategoryButton.getText().toString());
+                resultIntent.putExtra("TASK_PRIORITY", binding.taskPriorityButton.getText().toString());
+                resultIntent.putExtra("TASK_CHECK", binding.state.isChecked());
+                resultIntent.putExtra("TASK_POSITION", getIntent().getIntExtra("TASK_POSITION", -1));
+
+                setResult(RESULT_OK, resultIntent);
+                finish();
+            }
+        });
     }
+
 
     private void initiateDialog(){
         taskAndDescripitionEditDialogBinding = TaskAndDescripitionEditDialogBinding.inflate(LayoutInflater.from(this));
@@ -191,7 +205,6 @@ public class TaskDetailActivity extends AppCompatActivity {
         binding.taskDescription.setText(taskDescription);
         binding.taskCategoryButton.setText(taskCategory);
         binding.taskPriorityButton.setText(taskPriority);
-
         binding.state.setChecked(isChecked);
 
     }
