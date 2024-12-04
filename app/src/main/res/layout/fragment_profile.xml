@@ -43,7 +43,7 @@
         android:paddingEnd="20dp"
         android:paddingBottom="10dp"
         android:text="Task Left"
-        android:textSize="20sp"
+        android:textSize="19sp"
         app:layout_constraintEnd_toStartOf="@+id/task_done"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
         android:paddingEnd="20dp"
         android:paddingBottom="10dp"
         android:text="Task Done"
-        android:textSize="20sp"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/task_left"
@@ -73,7 +73,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/settings_title"
         android:textColor="@color/light_gray"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/task_left" />
 
@@ -93,7 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="@string/setting_app"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/setting_image"
         app:layout_constraintStart_toEndOf="@id/setting_image"
         app:layout_constraintTop_toTopOf="@id/setting_image" />
@@ -105,7 +105,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/account_title"
         android:textColor="@color/light_gray"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/setting_image" />
 
@@ -125,7 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="@string/change_acc_name"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/acc_image"
         app:layout_constraintStart_toEndOf="@id/acc_image"
         app:layout_constraintTop_toTopOf="@id/acc_image" />
@@ -146,7 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="@string/change_acc_pass"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/pass_image"
         app:layout_constraintStart_toEndOf="@id/pass_image"
         app:layout_constraintTop_toTopOf="@id/pass_image" />
@@ -167,7 +167,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="@string/change_acc_img"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/camera"
         app:layout_constraintStart_toEndOf="@id/camera"
         app:layout_constraintTop_toTopOf="@id/camera" />

@@ -91,4 +91,8 @@
 
     <string name="enter_new_acc_name">Enter new user name</string>
 
+    <string name="enter_old_acc_pass">Enter old password</string>
+    <string name="enter_new_acc_pass">Enter new password</string>
+    <string name="confirm_new_acc_pass">Re-enter new password</string>
+
     </resources>

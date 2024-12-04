@@ -42,15 +42,6 @@ public class MainActivity extends AppCompatActivity {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         user();
 
-        binding.signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myAuth.signOut();
-                startActivity(new Intent(MainActivity.this, WellcomeActivity.class));
-                finish();
-            }
-        });
-
         binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
