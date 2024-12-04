@@ -1,5 +1,6 @@
 package com.example.keeper;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,11 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.keeper.databinding.ChangeAccountNameDialogBinding;
 import com.example.keeper.databinding.FragmentProfileBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
+    private FirebaseUser firebaseUser;
+
+    private ChangeAccountNameDialogBinding changeAccNameDialogBinding;
+
+    private Dialog changeAccNameDialog;
+
+    private UserManager userManager;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -46,6 +57,14 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
+
+        userManager = new UserManager();
+        initializeDialogs();
+        setOnClickListeners();
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        binding.userName.setText(userManager.getUserName());
+
         return binding.getRoot();
     }
 
@@ -54,5 +73,39 @@ public class ProfileFragment extends Fragment {
         super.onDestroy();
 
         binding = null;
+    }
+
+    private void initializeDialogs() {
+        changeAccNameDialogBinding = ChangeAccountNameDialogBinding.inflate(getLayoutInflater());
+        changeAccNameDialog = new Dialog(requireContext());
+        changeAccNameDialog.setContentView(changeAccNameDialogBinding.getRoot());
+    }
+
+    private void setOnClickListeners(){
+
+        binding.accText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeAccNameDialog.show();
+            }
+        });
+
+
+        changeAccNameDialogBinding.cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeAccNameDialog.dismiss();
+            }
+        });
+
+        changeAccNameDialogBinding.editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newUserName = changeAccNameDialogBinding.newUserName.getText().toString();
+                userManager.setUserName(newUserName);
+                binding.userName.setText(newUserName);
+                changeAccNameDialog.dismiss();
+            }
+        });
     }
 }

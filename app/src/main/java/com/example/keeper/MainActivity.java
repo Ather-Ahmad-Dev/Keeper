@@ -13,11 +13,18 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.keeper.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private FirebaseAuth myAuth;
+    private FirebaseUser firebaseUser;
+    private final String HOME = "Home";
+    private final String CALENDER = "Calender";
+    private final String FOCUS = "Focus";
+    private final String PROFILE = "Profile";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         myAuth = FirebaseAuth.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        user();
 
         binding.signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,12 +79,16 @@ public class MainActivity extends AppCompatActivity {
 
             if (item.getItemId() == R.id.index){
                 replaceFragment(new HomeFragment());
+                binding.title.setText(HOME);
             } else if (item.getItemId() == R.id.calender) {
                 replaceFragment(new CalenderFragment());
+                binding.title.setText(CALENDER);
             } else if (item.getItemId() == R.id.focus) {
                 replaceFragment(new FocusFragment());
+                binding.title.setText(FOCUS);
             } else if (item.getItemId() == R.id.profile) {
                 replaceFragment(new ProfileFragment());
+                binding.title.setText(PROFILE);
             }
             return true;
         });
@@ -86,5 +99,11 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.framelayout, fragment);
         fragmentTransaction.commit();
+    }
+
+    private void user(){
+        UserManager userManager = new UserManager();
+        String userName = firebaseUser.getDisplayName();
+        userManager.addUser(new User(userName));
     }
 }

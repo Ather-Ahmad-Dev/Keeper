@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.keeper.databinding.FragmentHomeBinding;
 import com.example.keeper.databinding.TaskBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,41 +31,7 @@ public class HomeFragment extends Fragment {
     private TaskBinding taskBinding;
     private RecyclerViewAdapter recyclerViewAdapter;
     private List<RecyclerViewModelClass> itemList = new ArrayList<>();
-    private ActivityResultLauncher<Intent> editTaskLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if (result.getResultCode() == Activity.RESULT_OK) {
-                    Intent data = result.getData();
-                    if (data != null) {
-
-                        boolean deleteTask = data.getBooleanExtra("DELETE_TASK", false);
-                        int position = data.getIntExtra("TASK_POSITION", -1);
-
-                        if (deleteTask && position != 1) {
-                            itemList.remove(position);
-                            recyclerViewAdapter.notifyItemRemoved(position);
-                        } else if (position != 1) {
-
-                            String title = data.getStringExtra("TASK_TITLE");
-                            String description = data.getStringExtra("TASK_DESCRIPTION");
-                            String tag = data.getStringExtra("TASK_CATEGORY");
-                            String priority = data.getStringExtra("TASK_PRIORITY");
-                            boolean isChecked = data.getBooleanExtra("TASK_CHECK", false);
-
-                            RecyclerViewModelClass updatedTask = itemList.get(position);
-                            updatedTask.setTaskTitle(title);
-                            updatedTask.setTaskTime(description);
-                            updatedTask.setTag(tag);
-                            updatedTask.setPriority(priority);
-                            updatedTask.setChecked(isChecked);
-
-                            recyclerViewAdapter.notifyItemChanged(position);
-                        }
-                    }
-                }
-            }
-    );
-
+    private ActivityResultLauncher<Intent> editTaskLauncher;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -106,6 +73,9 @@ public class HomeFragment extends Fragment {
 
         binding.allTasks.setLayoutManager(new LinearLayoutManager(requireContext()));
 
+        setLauncher();
+
+
         itemList.add(new RecyclerViewModelClass("Title 1", "Timing 1", "University", "1", true));
         itemList.add(new RecyclerViewModelClass("Title 2", "Timing 2", "University", "2", false));
 
@@ -134,5 +104,42 @@ public class HomeFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         binding = null;
+    }
+
+    public void setLauncher(){
+        editTaskLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        if (data != null) {
+
+                            boolean deleteTask = data.getBooleanExtra("DELETE_TASK", false);
+                            int position = data.getIntExtra("TASK_POSITION", -1);
+
+                            if (deleteTask && position != 1) {
+                                itemList.remove(position);
+                                recyclerViewAdapter.notifyItemRemoved(position);
+                            } else if (position != 1) {
+
+                                String title = data.getStringExtra("TASK_TITLE");
+                                String description = data.getStringExtra("TASK_DESCRIPTION");
+                                String tag = data.getStringExtra("TASK_CATEGORY");
+                                String priority = data.getStringExtra("TASK_PRIORITY");
+                                boolean isChecked = data.getBooleanExtra("TASK_CHECK", false);
+
+                                RecyclerViewModelClass updatedTask = itemList.get(position);
+                                updatedTask.setTaskTitle(title);
+                                updatedTask.setTaskTime(description);
+                                updatedTask.setTag(tag);
+                                updatedTask.setPriority(priority);
+                                updatedTask.setChecked(isChecked);
+
+                                recyclerViewAdapter.notifyItemChanged(position);
+                            }
+                        }
+                    }
+                }
+        );
     }
 }

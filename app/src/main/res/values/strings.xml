@@ -75,4 +75,20 @@
     <string name="r_u_sure">Are you sure?</string>
     <string name="unrecoverable">You may not be able to recover this task</string>
 
-</resources>
+    <string name="profile_title">Profile</string>
+    <string name="settings_title">Settings</string>
+    <string name="setting_app">App Settings</string>
+    <string name="account_title">Account</string>
+    <string name="change_acc_name">Change account name</string>
+    <string name="change_acc_pass">Change account password</string>
+    <string name="change_acc_img">Change account image</string>
+    <string name="logout_button">Logout</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="settings_image">Settings Image</string>
+    <string name="password_image">Password Image</string>
+    <string name="camera">Camera</string>
+
+
+    <string name="enter_new_acc_name">Enter new user name</string>
+
+    </resources>
